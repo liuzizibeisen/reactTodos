@@ -1,0 +1,12 @@
+.todoList ul {
+  padding: 0;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  width: 400px;
+}
+.todoList li {
+  list-style: none;
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  padding: 0 10px;
+}

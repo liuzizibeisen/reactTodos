@@ -1,0 +1,26 @@
+.todoItem {
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+}
+.todoItem input {
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+.todoItem span {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+}
+.todoItem button {
+  float: right;
+  border: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+}
