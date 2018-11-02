@@ -1,0 +1,28 @@
+.filterBox {
+  display: flex;
+  font-size: 14px;
+  color: #666;
+}
+.filterBox div{
+  display: inline-block;
+  flex: 1;
+}
+.filterBox .filters {
+  flex: 2;
+  text-align: center;
+}
+.clearCompleted {
+  text-align: right;
+}
+.filterBox .filters span {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.filterBox .filters span + span{
+  margin-left: 8px;
+}
