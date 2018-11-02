@@ -10,13 +10,16 @@ class TodoList extends Component {
       todoList: this.props.todoList
     }
   }
+  handleDeleteItem = (deleteItemId) => {
+    this.props.handleDeleteItem(deleteItemId)
+  }
   render() {
     let { todoList } = this.props
     return (
       <div className="todoList">
         <ul>
           {todoList.map((item, index) => 
-            <TodoItem todoInfo={item} key={index} />
+            <TodoItem todoInfo={item} key={index} handleDeleteItem={this.handleDeleteItem} />
           )}
         </ul>
       </div>

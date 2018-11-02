@@ -18,7 +18,6 @@ class AddTodo extends Component {
         name: name,
         complete: false
       }
-      debugger
       e.currentTarget.value = ''
       this.props.onAddItem && this.props.onAddItem(newItem)
     }
