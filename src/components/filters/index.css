@@ -19,9 +19,12 @@
   height: 20px;
   line-height: 20px;
   padding: 0 5px;
-  border: 1px solid #ccc;
   border-radius: 2px;
+  box-sizing: border-box;
   cursor: pointer;
+}
+.filterBox .selectedState {
+  border: 1px solid #ccc;
 }
 .filterBox .filters span + span{
   margin-left: 8px;
