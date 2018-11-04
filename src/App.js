@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   // 添加一条 todo
-  onAddItem = (newItem) => {
+  onAddItem (newItem) {
     let currentList = this.state.todoList
     currentList.push(newItem)
     this.setState({
@@ -26,32 +26,29 @@ class App extends Component {
 
   // 删除一条 todo
   handleDeleteItem (deleteItemId) {
-    let todoList = this.state.todoList
-    let nowTodoList = todoList.filter(function (item) {
+    let self = this
+    let nowTodoList = this.state.todoList.filter(function (item) {
       return item.id !== parseInt(deleteItemId)
     })
-    this.setState({
-      todoList: nowTodoList
+    this.setState({todoList: nowTodoList},  () => {
+      self.toogleFilter(this.state.filterState)
     })
     this.toogleFilter(this.state.filterState)
   }
 
   // 保存编辑
   handleSaveEdit (editItemId, text) {
-    let currentList = this.state.todoList
-    currentList.map(function (item) {
+    this.state.todoList.map(function (item) {
       if (item.id === editItemId) {
         item.name = text
       }
     })
-    this.setState({todoList: currentList})
     this.toogleFilter(this.state.filterState)
   }
 
   // 切换状态
   toogleState (state, itemId) {
-    let todoList = this.state.todoList
-    todoList.map(function (item) {
+    this.state.todoList.map(function (item) {
       if (item.id === itemId) {
         if (state) {
           item.complete = true
@@ -60,17 +57,18 @@ class App extends Component {
         }
       }
     })
-    this.setState({todoList: todoList})
     this.toogleFilter(this.state.filterState)
   }
 
   // 清空已完成的 todos
   clearCompleted () {
+    let self = this
     let activeList = this.state.todoList.filter(function (item) {
       return !item.complete
     })
-    this.setState({todoList: activeList})
-    this.toogleFilter(this.state.filterState)
+    this.setState({todoList: activeList}, () => {
+      self.toogleFilter(this.state.filterState)
+    })
   }
 
   // 切换筛选条件
@@ -95,7 +93,7 @@ class App extends Component {
       <div className="App">
         <h1>todos</h1>
         <div className="content">
-          <AddTodo todoList={this.state.currentList} onAddItem={this.onAddItem}/>
+          <AddTodo todoList={this.state.currentList} onAddItem={this.onAddItem.bind(this)}/>
           <TodoList 
             todoList={this.state.currentList}
             filterState={this.state.filterState}
