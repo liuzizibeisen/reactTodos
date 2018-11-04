@@ -7,9 +7,14 @@ class Filters extends Component {
       selected: 0
     }
   }
+  // 切换筛选条件
   toogleFilter (selected) {
     this.setState({selected: selected})
     this.props.toogleFilter(selected)
+  }
+  // 清除已完成的 todo
+  clearCompleted = () => {
+    this.props.clearCompleted()
   }
   render() {
     return (
@@ -23,7 +28,7 @@ class Filters extends Component {
           <span className={this.state.selected === 1 ? 'selectedState' : ''} onClick={this.toogleFilter.bind(this, 1)}>Active</span>
           <span className={this.state.selected === 2 ? 'selectedState' : ''} onClick={this.toogleFilter.bind(this,2)}>Completed</span>
         </div>
-        <div className="clearCompleted">
+        <div className="clearCompleted" onClick={this.clearCompleted}>
           <span>Clear completed</span>
         </div>
       </div>

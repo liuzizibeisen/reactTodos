@@ -13,6 +13,7 @@
 }
 .clearCompleted {
   text-align: right;
+  cursor: pointer;
 }
 .filterBox .filters span {
   display: inline-block;

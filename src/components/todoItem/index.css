@@ -11,8 +11,8 @@
 }
 .todoItem span {
   display: inline-block;
-  height: 20px;
-  line-height: 20px;
+  line-height: 40px;
+  width: 80%;
 }
 .todoItem button {
   float: right;
@@ -23,4 +23,9 @@
   outline: none;
   cursor: pointer;
   font-size: 14px;
+}
+.todoItem .edit {
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
 }
