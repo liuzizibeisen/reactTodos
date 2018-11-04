@@ -6,7 +6,8 @@ class TodoItem extends Component {
     super(props)
     this.state = {
       showEdit: false,
-      editText: ''
+      editText: '',
+      completed: false
     }
   }
   // 删除一条 todo
@@ -17,6 +18,7 @@ class TodoItem extends Component {
   toogleState = (e) => {
     let state = e.currentTarget.checked
     let itemId = parseInt(e.currentTarget.value)
+    this.setState({completed: state})
     this.props.toogleState(state, itemId)
   }
   // 切换到编辑状态
@@ -59,8 +61,8 @@ class TodoItem extends Component {
               />
             </div>
           ) : (<div>
-          <input type="checkbox" value={this.props.todoInfo.id} onClick={this.toogleState}/>
-          <span className="label" onDoubleClick={this.handleEdit.bind(this, this.props.todoInfo.id)} >{this.props.todoInfo.name}</span>
+          <input type="checkbox" value={this.props.todoInfo.id} checked={this.props.todoInfo.complete ? 'checked': ''} onChange={this.toogleState}/>
+          <span className={`label ${this.props.todoInfo.complete ? 'through': ''}`} onDoubleClick={this.handleEdit.bind(this, this.props.todoInfo.id)} >{this.props.todoInfo.name}</span>
           <button className="delete" id={this.props.todoInfo.id} onClick={this.deleteItem}>X</button>
         </div>)
         }
