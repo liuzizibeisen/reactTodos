@@ -7,7 +7,8 @@ class TodoItem extends Component {
     this.state = {
       showEdit: false,
       editText: '',
-      completed: false
+      completed: false,
+      showDelete: false
     }
   }
   // 删除一条 todo
@@ -45,9 +46,16 @@ class TodoItem extends Component {
       this.handleSaveEdit()
     }
   }
+  mouseEnter = (e) => {
+    this.setState({showDelete: true})
+  }
+
+  mouseLeave = (e) => {
+    this.setState({showDelete: false})
+  }
   render() {
     return (
-      <li className="todoItem">
+      <li className="todoItem" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         {
           this.state.showEdit ? (
             <div className="editContainer">
@@ -63,7 +71,7 @@ class TodoItem extends Component {
           ) : (<div>
           <input type="checkbox" value={this.props.todoInfo.id} checked={this.props.todoInfo.complete ? 'checked': ''} onChange={this.toogleState}/>
           <span className={`label ${this.props.todoInfo.complete ? 'through': ''}`} onDoubleClick={this.handleEdit.bind(this, this.props.todoInfo.id)} >{this.props.todoInfo.name}</span>
-          <button className="delete" id={this.props.todoInfo.id} onClick={this.deleteItem}>X</button>
+          <button className={`delete ${this.state.showDelete ? '' : 'hide'}`} id={this.props.todoInfo.id} onClick={this.deleteItem}>X</button>
         </div>)
         }
       </li>

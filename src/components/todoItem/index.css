@@ -36,3 +36,6 @@
   text-decoration: line-through;
   color: #ccc;
 }
+.hide {
+  display: none;
+}
