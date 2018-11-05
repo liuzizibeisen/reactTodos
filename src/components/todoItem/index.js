@@ -10,13 +10,20 @@ class TodoItem extends Component {
       completed: false,
       showDelete: false
     }
+    this.deleteItem = this.deleteItem.bind(this)
+    this.toogleState = this.toogleState.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSaveEdit = this.handleSaveEdit.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.mouseEnter = this.mouseEnter.bind(this)
+    this.mouseLeave = this.mouseLeave.bind(this)
   }
   // 删除一条 todo
-  deleteItem = (e) => {
+  deleteItem (e) {
     this.props.handleDeleteItem && this.props.handleDeleteItem(e.currentTarget.id)
   }
   // 切换完成状态
-  toogleState = (e) => {
+  toogleState (e) {
     let state = e.currentTarget.checked
     let itemId = parseInt(e.currentTarget.value)
     this.setState({completed: state})
@@ -27,11 +34,11 @@ class TodoItem extends Component {
     this.setState({showEdit: true,editText: this.props.todoInfo.name,editId: editId})
   }
   // 编辑
-  handleChange = (e) => {
+  handleChange (e) {
     this.setState({editText: e.currentTarget.value})
   }
   // 保存编辑
-  handleSaveEdit = () => {
+  handleSaveEdit () {
     let text = this.state.editText.trim()
     if (text) {
       this.props.handleSaveEdit(this.state.editId, text)
@@ -41,16 +48,16 @@ class TodoItem extends Component {
     }
   }
   // 保存编辑
-  handleKeyDown = (e) => {
+  handleKeyDown (e) {
     if (e.keyCode === 13) {
       this.handleSaveEdit()
     }
   }
-  mouseEnter = (e) => {
+  mouseEnter () {
     this.setState({showDelete: true})
   }
 
-  mouseLeave = (e) => {
+  mouseLeave () {
     this.setState({showDelete: false})
   }
   render() {
